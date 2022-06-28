@@ -6,7 +6,10 @@ import {
   Typography,
   Container,
   Box,
+  Grid,
+  Link,
 } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -49,6 +52,19 @@ const UserForm = (props) => {
             >
               {props.title}
             </Button>
+            {props.linkTo && (
+              <Grid container justifyContent='flex-end'>
+                <Grid item>
+                  <Link
+                    variant='body2'
+                    component={RouterLink}
+                    to={props.linkTo.to}
+                  >
+                    {props.linkTo.text}
+                  </Link>
+                </Grid>
+              </Grid>
+            )}
           </Box>
         </Box>
       </Container>

@@ -66,7 +66,11 @@ const Register = () => {
   };
 
   return (
-    <UserForm title='Sign Up' onSubmit={createUserHandler}>
+    <UserForm
+      title='Sign Up'
+      onSubmit={createUserHandler}
+      linkTo={{ to: '/login', text: 'Already have an account? Sign in' }}
+    >
       <FormElement
         name='username'
         label='Username'
