@@ -28,7 +28,7 @@ const EditForm = (props) => {
             color='primary'
             sx={{ mt: 3, mb: 2 }}
           >
-            Сохранить
+            {props.btnText}
           </Button>
         </Box>
       </Box>

@@ -1,0 +1,40 @@
+.Account {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 400px auto;
+  grid-template-columns: 400px auto;
+  grid-auto-rows: 400px;
+}
+.Account__image {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+  grid-template-columns: 100%;
+  row-gap: 10px;
+  grid-auto-rows: -webkit-min-content;
+  -ms-grid-rows: -webkit-min-content;
+  -ms-grid-rows: min-content;
+  grid-template-rows: auto -webkit-min-content;
+  grid-template-rows: auto min-content;
+}
+.Account__image > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1
+}
+.Account__image > *:nth-child(2) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1
+}
+.Account__image > *:nth-child(3) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1
+}
+.Account__image__img {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  overflow: hidden;
+}
+.Account__content {
+  margin: auto;
+}

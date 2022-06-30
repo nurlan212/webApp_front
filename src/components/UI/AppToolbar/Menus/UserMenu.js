@@ -55,7 +55,9 @@ const UserMenu = ({ user }) => {
         <MenuItem component={Link} to='/account'>
           Profile
         </MenuItem>
-        <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+        <MenuItem onClick={logoutHandler} component={Link} to='/'>
+          Logout
+        </MenuItem>
       </Menu>
     </Grid>
   );

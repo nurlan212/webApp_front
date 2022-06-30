@@ -4,6 +4,7 @@ import Register from './containers/Register/Register.js';
 import './App.css';
 import Login from './containers/Login/Login';
 import Account from './containers/Account/Account';
+import AccountEdit from './containers/AccountEdit/AccountEdit';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/register' exact element={<Register />} />
           <Route path='/login' exact element={<Login />} />
           <Route path='/account' exact element={<Account />} />
+          <Route path='/account/edit' exact element={<AccountEdit />} />
           <Route path='/people' exact element={<div>Accounts</div>} />
         </Routes>
       </div>

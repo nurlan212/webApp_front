@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Alert, AlertTitle } from '@mui/material';
 import FormElement from '../../components/UI/FormElement/FormElement';
 import UserForm from '../../components/UserForm/UserForm';
@@ -7,6 +8,7 @@ import { loginUser } from '../../store/actions/usersActions';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const error = useSelector((state) => state.users.loginError);
   const [state, setState] = useState({
     username: '',
@@ -22,7 +24,7 @@ const Login = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(loginUser({ ...state }));
+    dispatch(loginUser({ ...state }, navigate));
   };
 
   return (

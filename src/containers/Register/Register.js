@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import 'date-fns';
 import FormElement from '../../components/UI/FormElement/FormElement';
 import UserForm from '../../components/UserForm/UserForm';
@@ -10,6 +11,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { TextField, Stack } from '@mui/material';
 
 const Register = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const error = useSelector((state) => state.users.registerError);
   const [state, setState] = useState({
@@ -50,7 +52,7 @@ const Register = () => {
     Object.keys(state).forEach((key) => {
       formData.append(key, state[key]);
     });
-    dispatch(createUser(formData));
+    dispatch(createUser(formData, navigate));
   };
 
   const onChangeFile = (e) => {

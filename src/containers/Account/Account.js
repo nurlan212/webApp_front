@@ -1,61 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import EditForm from '../../components/EditForm/EditForm';
 import FormElement from '../../components/UI/FormElement/FormElement';
-import InputFile from '../../components/UI/InputFile/InputFile';
-import './Account.css';
+import { baseUrl } from '../../constants';
+import '../AccountEdit/AccountEdit.css';
 
 const Account = (props) => {
-  const [state, setState] = useState({
-    username: '',
-    password: '',
-    image: '',
-  });
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.users.user);
 
-  const [fileName, setFileName] = useState('No selected files');
-
-  const changeInputHandler = (e) => {
-    const { name, value } = e.target;
-    setState((prev) => {
-      return { ...prev, [name]: value };
-    });
+  const clickButtonHandler = (e) => {
+    e.preventDefault();
+    navigate('/account/edit');
   };
 
-  const onChangeFile = (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      setState((prev) => {
-        return { ...prev, image: file };
-      });
-
-      setFileName(file.name);
-    }
-  };
+  const imagePath = user.image
+    ? `${baseUrl}/uploads/${user.image}`
+    : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
 
   return (
     <div className='Account'>
       <div className='Account__image'>
-        <img
-          src='https://www.imgonline.com.ua/examples/bee-on-daisy.jpg'
-          alt='profile_image'
+        <div
+          className='Account__image__img'
+          style={{ backgroundImage: `url(${imagePath}` }}
         />
-        <InputFile onChangeFile={onChangeFile} fileName={fileName} />
       </div>
       <div className='Account__content'>
-        <EditForm>
+        <EditForm onSubmit={clickButtonHandler} btnText='Изменить'>
           <FormElement
             name='username'
             label='Username'
             type='text'
-            onChange={changeInputHandler}
-            value={state.username}
-          />
-          <FormElement
-            name='password'
-            label='Password'
-            type='password'
-            onChange={changeInputHandler}
-            value={state.password}
+            value={user.username}
+            disabled
           />
         </EditForm>
       </div>
