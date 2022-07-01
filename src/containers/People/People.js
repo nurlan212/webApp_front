@@ -18,7 +18,6 @@ const People = () => {
       {people &&
         people.map((human) => {
           let age = currentYear - new Date(human.birthdate).getFullYear();
-          console.log('BirthYear: ', new Date(human.birthdate).getFullYear());
           age = Math.floor(age);
           return (
             <CustomCard
