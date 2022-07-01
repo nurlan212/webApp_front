@@ -8,10 +8,13 @@ import {
   GET_USER_ME_FAILURE,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAILURE,
+  GET_PEOPLE_SUCCESS,
+  GET_PEOPLE_FAILURE,
 } from '../actionTypes';
 
 const initialState = {
   user: null,
+  people: null,
   registerError: null,
   loginError: null,
   error: null,
@@ -37,6 +40,10 @@ const reducer = (state = initialState, action) => {
       return { ...state, user: action.user, error: null };
     case EDIT_USER_FAILURE:
       return { ...state, error: action.error };
+    case GET_PEOPLE_SUCCESS:
+      return { ...state, people: action.people, error: null };
+    case GET_PEOPLE_FAILURE:
+      return { ...state, people: null, error: action.error };
     default:
       return state;
   }

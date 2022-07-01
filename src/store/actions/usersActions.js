@@ -9,6 +9,8 @@ import {
   GET_USER_ME_FAILURE,
   EDIT_USER_FAILURE,
   EDIT_USER_SUCCESS,
+  GET_PEOPLE_SUCCESS,
+  GET_PEOPLE_FAILURE,
 } from '../actionTypes';
 
 const createUserSuccess = (user) => {
@@ -108,6 +110,25 @@ export const editUser = (user) => {
       } else {
         dispatch(editUserFailure(error));
       }
+    }
+  };
+};
+
+const getPeopleSuccess = (people) => {
+  return { type: GET_PEOPLE_SUCCESS, people };
+};
+
+const getPeopleError = (error) => {
+  return { type: GET_PEOPLE_FAILURE, error };
+};
+
+export const getPeople = () => {
+  return async (dispatch) => {
+    try {
+      const resp = await axios.get('/users/people');
+      dispatch(getPeopleSuccess(resp.data));
+    } catch (error) {
+      dispatch(getPeopleError(error));
     }
   };
 };

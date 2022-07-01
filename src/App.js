@@ -5,6 +5,7 @@ import './App.css';
 import Login from './containers/Login/Login';
 import Account from './containers/Account/Account';
 import AccountEdit from './containers/AccountEdit/AccountEdit';
+import People from './containers/People/People';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path='/login' exact element={<Login />} />
           <Route path='/account' exact element={<Account />} />
           <Route path='/account/edit' exact element={<AccountEdit />} />
-          <Route path='/people' exact element={<div>Accounts</div>} />
+          <Route path='/people' exact element={<People />} />
         </Routes>
       </div>
     </>
